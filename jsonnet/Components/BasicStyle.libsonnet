@@ -618,7 +618,7 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
             local findSelectedIndex =
               local findIndex(arr, idx) =
               if idx >= std.length(arr) then
-                0 // 默认选中第一个
+                std.floor(std.length(arr) / 2) // 默认选中间那一项
               else if std.objectHas(arr[idx], 'selected') && arr[idx].selected == true then
                 idx
               else
