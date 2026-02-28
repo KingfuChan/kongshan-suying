@@ -23,8 +23,8 @@ local settings = import '../Settings.libsonnet';
     }
     else
     {
-      portrait: 311,  // 64 * 4 + 55
-      landscape: 414,  // 86 * 4 + 70
+      portrait: 256,  // 64 * 4
+      landscape: 344,  // 86 * 4
     },
 
   // 按键背景内边距
