@@ -158,7 +158,7 @@ local newKeyLayout(isDark=false, isPortrait=false, extraParams={}) =
         + (
           if utils.numericActionNeedSymbol(settings.keyboardLayout) then
           {
-            action: utils.repalceCharacterToSymbolRecursive(button.params.action),
+            action: utils.replaceCharacterToSymbolRecursive(button.params.action),
             whenPreeditChanged: {
               action: button.params.action,
             },

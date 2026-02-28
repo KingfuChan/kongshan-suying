@@ -254,7 +254,7 @@ local newRimeOptionChangedNotification(name, rimeOptionName, value, params={}) =
 };
 
 // 递归地将所有键名 character 替换为 symbol
-local repalceCharacterToSymbolRecursive(params) =
+local replaceCharacterToSymbolRecursive(params) =
   if std.isObject(params) then
     std.foldl(
       function(acc, key)
@@ -262,13 +262,13 @@ local repalceCharacterToSymbolRecursive(params) =
             if key == 'character' then
               { symbol: params[key] }
             else
-              { [key]: repalceCharacterToSymbolRecursive(params[key]), }
+              { [key]: replaceCharacterToSymbolRecursive(params[key]), }
        ),
       std.objectFields(params),
       {},
     )
   else if std.isArray(params) then
-    std.map(repalceCharacterToSymbolRecursive, params)
+    std.map(replaceCharacterToSymbolRecursive, params)
   else
     params;
 
@@ -324,7 +324,7 @@ local numericActionNeedSymbol(layout) =
   rimeOptionChangedForegroundStyleName: rimeOptionChangedForegroundStyleName,
   rimeOptionChangedNotificationName: rimeOptionChangedNotificationName,
   newRimeOptionChangedNotification: newRimeOptionChangedNotification,
-  repalceCharacterToSymbolRecursive: repalceCharacterToSymbolRecursive,
+  replaceCharacterToSymbolRecursive: replaceCharacterToSymbolRecursive,
   calcMainTextCenter: calcMainTextCenter,
   numericActionNeedSymbol: numericActionNeedSymbol,
 }
