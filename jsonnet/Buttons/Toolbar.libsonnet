@@ -266,7 +266,8 @@ local skinConfig = import '../SkinConfig.libsonnet';
       name: 'toolbarKeyboardEmojiButton',
       params: {
         action: { keyboardType: 'emojis', },
-        systemImageName: 'face.smiling.inverse',
+		// systemImageName: 'face.smiling.inverse', // 这个表情经常会异常反色
+        systemImageName: 'face.dashed',
         text: '表情',
       },
     },
