@@ -130,8 +130,8 @@ local skinConfig = import '../SkinConfig.libsonnet';
       name: 'toolbarHamster3Button',
       params: {
         action: 'settings',
-        systemImageName: 'gearshape',
-        text: '设置',
+        systemImageName: 'atom',
+        text: '元书',
       },
     },
     toolbarCheckUpdateButton: {
