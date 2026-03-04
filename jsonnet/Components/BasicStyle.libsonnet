@@ -682,11 +682,11 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
             root.name + 'PreeditChangedForegroundStyle',
           ] + (
             if std.objectHas(preeditChangedParams, 'swipeUp') then
-              [generateSwipeForegroundStyleName(root.name, 'Up')]
+              [generateSwipeForegroundStyleName(root.name, 'Up', 'PreeditChanged')]
             else []
           ) + (
             if std.objectHas(preeditChangedParams, 'swipeDown') then
-              [generateSwipeForegroundStyleName(root.name, 'Down')]
+              [generateSwipeForegroundStyleName(root.name, 'Down', 'PreeditChanged')]
             else []
           ),
           [if std.objectHas(preeditChangedParams, 'swipeUp') && std.objectHas(preeditChangedParams.swipeUp, 'action') then 'swipeUpAction']: preeditChangedParams.swipeUp.action,

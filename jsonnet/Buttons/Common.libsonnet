@@ -55,7 +55,10 @@ local settings = import '../Settings.libsonnet';
         text: settings.spaceButtonComposingText,
         fontSize: fonts.systemButtonTextFontSize,
 
-        swipeUp: { action: { shortcut: '#次选上屏' } },
+        swipeUp: {
+          action: { shortcut: '#次选上屏' },
+          text: '次选',
+        },
       },
     },
   },
