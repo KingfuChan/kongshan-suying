@@ -115,7 +115,7 @@ local settings = import '../Settings.libsonnet';
       longPress: [
         {
           action: { shortcut: '#换行' },
-          systemImageName: 'paragraphsign',
+          systemImageName: 'return',
         },
       ],
 
