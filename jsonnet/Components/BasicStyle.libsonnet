@@ -279,7 +279,7 @@ local newSystemButtonForegroundStyle(isDark=false, params={}, highPriorityParams
 
 local spaceButtonRimeSchemaForegroundStyleName = 'spaceButtonRimeSchemaForegroundStyle';
 local newSpaceButtonRimeSchemaForegroundStyle(schemaNameText, isDark=false) =
-  if settings.spaceButtonShowSchema then
+  if settings.spaceButtonSchemaNameCenter != null then
   {
     [spaceButtonRimeSchemaForegroundStyleName]: utils.newTextStyle({
       text: schemaNameText,
@@ -297,7 +297,7 @@ local spaceButtonForegroundStyle = [
   spaceButtonForegroundStyleName,
 ]
 + (
-  if settings.spaceButtonShowSchema then
+  if settings.spaceButtonSchemaNameCenter != null then
     [
       spaceButtonRimeSchemaForegroundStyleName,
     ]
@@ -938,7 +938,7 @@ local newSymbolicCollection(name, isDark=false, params={}) =
 
 local rimeSchemaChangedNotification =
   {
-    [if settings.spaceButtonShowSchema then 'rimeSchemaChangedNotification']: {
+    [if settings.spaceButtonSchemaNameCenter != null then 'rimeSchemaChangedNotification']: {
       notificationType: 'rime',
       rimeNotificationType: 'schemaChanged',
       backgroundStyle: alphabeticButtonBackgroundStyleName,

@@ -36,17 +36,13 @@
   iPad: false,
 
 
-  # 是否在空格键上显示方案名称
-  # true 显示方案名称，false 不显示
-  spaceButtonShowSchema: true,
-
-
-  # 方案名称在空格键上的位置，有的方案名称
-  # 较长，需要调整 x 值以免超出按键
-  spaceButtonSchemaNameCenter: {
-    x: 0.2,
-    y: 0.7
-  },
+  # 空格键方案名称显示位置
+  # x, y 取值范围为 [0, 1]
+  # x 值越小越靠左，y 值越小越靠上
+  # 特殊值 null 表示不显示方案名称
+  spaceButtonSchemaNameCenter:
+    { x: 0.2, y: 0.7 }, # 左下角
+    # null,               # 不显示
 
 
   # 上下滑动提示文字显示位置

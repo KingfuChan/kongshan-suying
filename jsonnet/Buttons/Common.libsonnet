@@ -47,7 +47,7 @@ local settings = import '../Settings.libsonnet';
       systemImageName: 'space',
       center: {x: 0.5, y: 0.5},
       notification:
-        (if settings.spaceButtonShowSchema then
+        (if settings.spaceButtonSchemaNameCenter != null then
           ['rimeSchemaChangedNotification']
         else []),
 
