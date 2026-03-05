@@ -116,6 +116,7 @@ local settings = import '../Settings.libsonnet';
         {
           action: { shortcut: '#换行' },
           systemImageName: 'return',
+          text: '换行',
         },
       ],
 
@@ -158,6 +159,7 @@ local settings = import '../Settings.libsonnet';
     params: {
       action: 'returnPrimaryKeyboard',
       systemImageName: 'arrow.backward',
+      text: '返回',
     },
   },
 
@@ -173,7 +175,7 @@ local settings = import '../Settings.libsonnet';
     name: 'numericButton',
     params: {
       action: { keyboardType: 'numeric' },
-      text: '123',
+      text: if settings.preferIcon then '123' else '数字',
       swipeUp: { action: { keyboardType: 'symbolic' } },
       swipeDown: { action: { keyboardType: 'emojis' } },
     }
@@ -196,7 +198,7 @@ local settings = import '../Settings.libsonnet';
     name: 'symbolicButton',
     params: {
       action: { keyboardType: 'symbolic' },
-      text: '#+=',
+      text: if settings.preferIcon then '#+=' else '符号',
     },
   },
 

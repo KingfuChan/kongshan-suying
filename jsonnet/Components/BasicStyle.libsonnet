@@ -42,21 +42,33 @@ local getKeyboardActionText(params={}, key='action', isUppercase=false) =
     {};
 
 // 按优先级生成样式
+// 此函数特别重要！错误地改动可能导致按键显示异常
+// 请勿随意改动此函数，除非你非常清楚自己在做什么
 local newStyleByPriority(isDark=false, params={}, highPriorityParams={}, systemImageParams={}, assetImageParams={}, textParams={}) =
   local tryAddTextInHighPriorityParams = getKeyboardActionText(highPriorityParams);
-  if std.objectHas(highPriorityParams, 'systemImageName') then
+  if std.objectHas(highPriorityParams, 'systemImageName') && settings.preferIcon then
     utils.newSystemImageStyle(systemImageParams + params + highPriorityParams, isDark)
   else if std.objectHas(highPriorityParams, 'assetImageName') then
     utils.newAssetImageStyle(assetImageParams + params + highPriorityParams, isDark)
   else if std.objectHas(tryAddTextInHighPriorityParams, 'text') then
     utils.newTextStyle(textParams + params + highPriorityParams + tryAddTextInHighPriorityParams, isDark)
+  else if std.objectHas(highPriorityParams, 'systemImageName') then
+    // 不喜欢 icon，但是按文本显示失败，再次尝试显示 icon
+    utils.newSystemImageStyle(systemImageParams + params + highPriorityParams, isDark)
 
-  else if std.objectHas(params, 'systemImageName') then
+  else if std.objectHas(params, 'systemImageName') && settings.preferIcon then
     utils.newSystemImageStyle(systemImageParams + params, isDark)
   else if std.objectHas(params, 'assetImageName') then
     utils.newAssetImageStyle(assetImageParams + params, isDark)
+  else if std.objectHas(getKeyboardActionText(params), 'text') then
+    utils.newTextStyle(textParams + params + getKeyboardActionText(params), isDark)
+  else if std.objectHas(params, 'systemImageName') then
+    // 不喜欢 icon，但是按文本显示失败，再次尝试显示 icon
+    utils.newSystemImageStyle(systemImageParams + params, isDark)
   else
-    utils.newTextStyle(textParams + params + getKeyboardActionText(params), isDark);
+    assert false : 'newStyleByPriority 生成样式失败，params 和 highPriorityParams 中缺乏必要的字段，当前参数为 params=' + std.toString(params) + '，highPriorityParams=' + std.toString(highPriorityParams);
+    {};
+
 // 通用键盘背景样式
 local keyboardBackgroundStyleName = 'keyboardBackgroundStyle';
 local newKeyboardBackgroundStyle(isDark=false, params={}) = {
@@ -366,8 +378,7 @@ local newFloatingKeyboardButton(name, isDark=false, params={}) =
   };
 
 local newToolbarButtonForegroundStyle(isDark=false, params={}) =
-  local preferIcon = settings.toolbarPreferIcon;
-  if preferIcon && (std.objectHas(params, 'systemImageName') || std.objectHas(params, 'assetImageName')) then
+  if settings.preferIcon && std.objectHas(params, 'systemImageName') then
     utils.newSystemImageStyle({
     normalColor: colors.toolbarButtonForegroundColor,
     highlightColor: colors.toolbarButtonHighlightedForegroundColor,
@@ -380,7 +391,7 @@ local newToolbarButtonForegroundStyle(isDark=false, params={}) =
     fontSize: fonts.toolbarButtonTextFontSize,
   } + params + getKeyboardActionText(params), isDark)
   else
-    assert false : 'toolbar button 必须指定 systemImageName、assetImageName、text 或 action 中的一个';
+    assert false : 'toolbar button 必须指定 systemImageName、text 或 action 中的一个，当前参数为' + std.toString(params);
     {};
 
 local toolbarSlideButtonsName = 'toolbarSlideButtons';

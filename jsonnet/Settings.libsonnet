@@ -85,9 +85,9 @@
   },
 
 
-  # toolbar 按钮以图标显示
+  # 同时配了图标和文字的，优先显示图标还是文字
   # true 显示图标，false 显示文字
-  toolbarPreferIcon: true,
+  preferIcon: true,
 
 
   # 主题色
