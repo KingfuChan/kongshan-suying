@@ -15,20 +15,7 @@ local narrowVStackStyle = {
   style: {
     [this.name]: {
       size: {
-        width: { percentage: 0.17 },
-      },
-    },
-  },
-};
-
-// 宽 VStack 宽度样式
-local wideVStackStyle = {
-  local this = self,
-  name: 'wideVStackStyle',
-  style: {
-    [this.name]: {
-      size: {
-        width: { percentage: 0.22 },
+        width: { percentage: 0.18 },
       },
     },
   },
@@ -279,7 +266,6 @@ else
       if !isPortrait then halfVStackStyle.style else {}
     )
     + narrowVStackStyle.style
-    + wideVStackStyle.style
     + basicStyle.newKeyboardBackgroundStyle(isDark)
     + basicStyle.newAlphabeticButtonBackgroundStyle(isDark, extraParams)
     + basicStyle.newSystemButtonBackgroundStyle(isDark, extraParams)
