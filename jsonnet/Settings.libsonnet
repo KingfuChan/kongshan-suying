@@ -42,6 +42,7 @@
   # 特殊值 null 表示不显示方案名称
   spaceButtonSchemaNameCenter:
     { x: 0.2, y: 0.7 }, # 左下角
+    # { x: 0.5, y: 0.5 }, # 中间
     # null,               # 不显示
 
 

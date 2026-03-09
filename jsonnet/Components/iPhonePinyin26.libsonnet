@@ -181,18 +181,16 @@ local newKeyLayout(isDark=false, isPortrait=true, keyboardType=KeyboardType.Chin
   + basicStyle.newAlphabeticButton(
     commonButtons.spaceButton.name,
     isDark,
-    {
-      foregroundStyleName: basicStyle.spaceButtonForegroundStyle,
-      foregroundStyle: basicStyle.newSpaceButtonRimeSchemaForegroundStyle(
-        if keyboardType == KeyboardType.English then
-          'English'
-        else if keyboardType == KeyboardType.Temp26Key then
-          '临时中文'
-        else
-          '$rimeSchemaName',
-        isDark),
-    }
-    + processButtonParams(keyboardType, commonButtons.spaceButton.params),
+    processButtonParams(keyboardType, commonButtons.spaceButton.params)
+    + basicStyle.newSpaceButtonForegroundStyle(
+      if keyboardType == KeyboardType.English then
+        'English'
+      else if keyboardType == KeyboardType.Temp26Key then
+        '临时中文'
+      else
+        '$rimeSchemaName',
+      isDark
+    ),
     needHint=false,
   )
   + local switchButton = getSwitchButton(keyboardType);

@@ -305,6 +305,11 @@ local calcMainTextCenter(swipeUpTextCenter, swipeDownTextCenter) =
 local numericActionNeedSymbol(layout) =
   std.member(['9', 'bopomofo'],layout);
 
+local normalizeCenter(center) = {
+  x: std.get(center, 'x', 0.5),
+  y: std.get(center, 'y', 0.5),
+};
+
 {
   extractProperty: extractProperty,
   extractProperties: extractProperties,
@@ -327,4 +332,5 @@ local numericActionNeedSymbol(layout) =
   replaceCharacterToSymbolRecursive: replaceCharacterToSymbolRecursive,
   calcMainTextCenter: calcMainTextCenter,
   numericActionNeedSymbol: numericActionNeedSymbol,
+  normalizeCenter: normalizeCenter,
 }
