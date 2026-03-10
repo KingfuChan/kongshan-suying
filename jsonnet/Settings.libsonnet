@@ -103,11 +103,24 @@
   uppercaseForChinese: true,
 
 
-  # 分词键，用于输入方案中分词使用
-  segmentAction:
-    # { character: '`'},
-    # 'tab',
-    { character: "'"},
+  # shiftButton 的功能定义
+  shiftButtonParams: {
+    systemImageName: 'shift',
+    action: 'shift',
+
+    uppercased: { systemImageName: 'shift.fill', },
+    capsLocked: { systemImageName: 'capslock.fill', },
+
+    whenPreeditChanged: {
+      action: { character: "'" },
+      systemImageName: 'square.and.line.vertical.and.square',
+      text: '分词',
+
+      # action: 'tab',
+      # systemImageName: 'arrow.right.to.line',
+      # text: 'Tab',
+    },
+  },
 
 
   # Rime 方案中的快符

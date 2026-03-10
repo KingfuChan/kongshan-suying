@@ -27,7 +27,7 @@ local rows = [
     buttons.lButton,
   ],
   [
-    commonButtons.segmentButton,
+    commonButtons.shiftButton,
     buttons.zButton,
     buttons.xButton,
     buttons.vButton,
@@ -89,9 +89,9 @@ local newKeyLayout(isDark=false, isPortrait=true) =
 
   // Third Row
   + basicStyle.newSystemButton(
-    commonButtons.segmentButton.name,
+    commonButtons.shiftButton.name,
     isDark,
-    commonButtons.segmentButton.params
+    commonButtons.shiftButton.params
   )
 
   + basicStyle.newSystemButton(

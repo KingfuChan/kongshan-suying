@@ -85,19 +85,7 @@ local settings = import '../Settings.libsonnet';
 
   shiftButton: {
     name: 'shiftButton',
-    params: {
-      systemImageName: 'shift',
-      action: 'shift',
-
-      uppercased: { systemImageName: 'shift.fill', },
-      capsLocked: { systemImageName: 'capslock.fill', },
-
-      whenPreeditChanged: {
-        action: settings.segmentAction,
-        systemImageName: 'square.and.line.vertical.and.square',
-        text: '分词',
-      },
-    },
+    params: settings.shiftButtonParams,
   },
 
   enterButton: {
@@ -203,14 +191,6 @@ local settings = import '../Settings.libsonnet';
     params: {
       action: { keyboardType: 'symbolic' },
       text: if settings.preferIcon then '#+=' else '符号',
-    },
-  },
-
-  segmentButton: {
-    name: 'segmentButton',
-    params: {
-      action: settings.segmentAction,
-      text: '分词',
     },
   },
 
