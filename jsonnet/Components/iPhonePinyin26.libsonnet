@@ -170,8 +170,8 @@ local newKeyLayout(isDark=false, isPortrait=true, keyboardType=KeyboardType.Chin
   + basicStyle.newAlphabeticButton(
     commonButtons.spaceButton.name,
     isDark,
-    utils.processButtonParams(isAlphabetic, commonButtons.spaceButton.params)
-    + basicStyle.newSpaceButtonForegroundStyle(
+    basicStyle.newSpaceButtonForegroundStyle(
+      utils.processButtonParams(isAlphabetic, commonButtons.spaceButton.params),
       if keyboardType == KeyboardType.English then
         'English'
       else if keyboardType == KeyboardType.Temp26Key then
