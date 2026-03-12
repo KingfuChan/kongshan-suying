@@ -157,7 +157,7 @@ local settings = import '../Settings.libsonnet';
       action: { character: 's' },
       uppercased: { action: { character: 'S' } },
       swipeUp: { action: { character: '^' } },
-      swipeDown: { action: { character: '`' } },
+      swipeDown: { action: { character: '%' } },
       longPress: [
         { action: { character: 'S' } },
       ],
@@ -287,7 +287,7 @@ local settings = import '../Settings.libsonnet';
     params: {
       action: { character: 'c' },
       uppercased: { action: { character: 'C' } },
-      swipeUp: { action: { character: '%' } },
+      swipeUp: { action: { character: '`' } },
       swipeDown: {
         action: { shortcut: '#copy' },
         text: '复',
