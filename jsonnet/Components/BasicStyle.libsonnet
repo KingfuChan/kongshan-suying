@@ -769,6 +769,36 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
       },
     },
 
+  // rime option 变化时生成 notification 及 foreground style
+  local _rimeOptionChangedForegroundStyleName(name, rimeOptionName, value) =
+    name + rimeOptionName + (if value then 'On' else 'Off') + 'ForegroundStyle',
+
+  local _rimeOptionChangedNotificationName(name, rimeOptionName, value) =
+    name + rimeOptionName + (if value then 'On' else 'Off') + 'Notification',
+
+  local _newRimeOptionChangedNotification(name, rimeOptionName, value, params={}) = {  // value is true or false
+    [_rimeOptionChangedNotificationName(name, rimeOptionName, value)]: std.prune({
+      notificationType: 'rime',
+      rimeNotificationType: 'optionChanged',
+      rimeOptionName: rimeOptionName,
+      rimeOptionValue: value,
+      backgroundStyle: params.backgroundStyleName,
+      foregroundStyle: params.foregroundStyleName,
+    }) + utils.extractProperties(
+      params,
+      [
+        'action',
+        'swipeUpAction',
+        'swipeDownAction',
+        'bounds',
+        'hintStyle',
+        'hintSymbolsStyle',
+        'uppercasedStateForegroundStyle',
+        'capsLockedStateForegroundStyle',
+      ]
+    ),
+  },
+
   AddRimeOptionChangeEvent():
     local hasRimeOptionParams = std.objectHas(root.params, 'whenRimeOptionChanged');
     if !hasRimeOptionParams then
@@ -785,7 +815,7 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
       local rimeOptionChangedForeground = replaceGivenPairs(
         oldForegroundStyle,
         {
-          [root.name + 'ForegroundStyle']: utils.rimeOptionChangedForegroundStyleName(root.name, rimeOptionName, rimeOptionValue),
+          [root.name + 'ForegroundStyle']: _rimeOptionChangedForegroundStyleName(root.name, rimeOptionName, rimeOptionValue),
           [if std.objectHas(rimeOptionParams, 'swipeUp') && root.showSwipeUpText then generateSwipeForegroundStyleName(root.name, 'Up')]: generateSwipeForegroundStyleName(root.name, 'Up', rimeOptionStr),
           [if std.objectHas(rimeOptionParams, 'swipeDown') && root.showSwipeDownText then generateSwipeForegroundStyleName(root.name, 'Down')]: generateSwipeForegroundStyleName(root.name, 'Down', rimeOptionStr),
         }
@@ -807,10 +837,10 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
           ],
 
           notification: [
-            utils.rimeOptionChangedNotificationName(root.name, rimeOptionName, rimeOptionValue),
+            _rimeOptionChangedNotificationName(root.name, rimeOptionName, rimeOptionValue),
           ],
         },
-        reference+: utils.newRimeOptionChangedNotification(root.name, rimeOptionName, rimeOptionValue, {
+        reference+: _newRimeOptionChangedNotification(root.name, rimeOptionName, rimeOptionValue, {
           backgroundStyleName: _BackgroundStyleName(rimeOptionParams),
           foregroundStyleName: rimeOptionChangedForeground,
           [if std.objectHas(rimeOptionParams, 'action') then 'action']: rimeOptionParams.action,
@@ -820,7 +850,7 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
         } + utils.extractProperties(root.params, ['bounds'])
         + utils.extractProperties(root[root.name], ['capsLockedStateForegroundStyle', 'uppercasedStateForegroundStyle']))
         + {
-          [utils.rimeOptionChangedForegroundStyleName(root.name, rimeOptionName, rimeOptionValue)]: newAlphabeticButtonForegroundStyle(root.isDark, root.params, rimeOptionParams),
+          [_rimeOptionChangedForegroundStyleName(root.name, rimeOptionName, rimeOptionValue)]: newAlphabeticButtonForegroundStyle(root.isDark, root.params, rimeOptionParams),
         }
         + {
           [if std.objectHas(rimeOptionParams, 'swipeUp') && root.showSwipeUpText then generateSwipeForegroundStyleName(root.name, 'Up', rimeOptionStr)]: newAlphabeticButtonAlternativeForegroundStyle(root.isDark, { center: swipeUpTextCenter }, rimeOptionParams.swipeUp),
