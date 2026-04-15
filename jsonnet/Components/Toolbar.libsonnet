@@ -304,12 +304,12 @@ local newToolbar(isDark=false, isPortrait=false, params={}) =
         backgroundStyle: verticalCandidateBackgroundStyleName,
       },
     verticalCandidatesLayout: verticalCandidatesLayout,
-    candidateContextMenu: [
-      {
-        name: '简繁',
-        action: { sendKeys: 'Control+Shift+dollar' },
-      },
-    ],
+    // candidateContextMenu: [
+    //   {
+    //     name: '简繁',
+    //     action: { sendKeys: 'Control+Shift+dollar' },
+    //   },
+    // ],
   }
   + newButtons(isDark)
   + newSlideAreaButtons(slideButtons, slideButtonsMaxCount, isDark)

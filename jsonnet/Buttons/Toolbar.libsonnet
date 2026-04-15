@@ -111,7 +111,7 @@ local settings = import '../Settings.libsonnet';
     toolbarRimeSwitcherButton: {
       name: 'toolbarRimeSwitcherButton',
       params: {
-        action: { shortcut: '#RimeSwitcher' },
+        action: { sendKeys: 'Control+Shift+grave' },
         systemImageName: 'switch.2',
         text: '开关',
       },

@@ -43,9 +43,9 @@
   # x 值越小越靠左，y 值越小越靠上
   # 特殊值 null 表示不显示方案名称
   spaceButtonSchemaNameCenter:
-    { x: 0.2, y: 0.7 }, # 左下角
+    # { x: 0.2, y: 0.7 }, # 左下角
     # { x: 0.5, y: 0.5 }, # 中间
-    # null,               # 不显示
+    null,               # 不显示
 
 
   # 上下滑动提示文字显示位置
@@ -56,8 +56,8 @@
   # bottomLeft   ↙️左下角
   # bottom       ⬇️正下方
   # bottomRight  ↘️右下角
-  swipeUpTextCenter: 'top',
-  swipeDownTextCenter: 'hide',
+  swipeUpTextCenter: 'topLeft',
+  swipeDownTextCenter: 'topRight',
 
 
   # toolbar 按钮配置
@@ -79,11 +79,11 @@
   # 26-左移  27-右移
   #
   # 将上述代号填入下面的数组即可
-  toolbarSlideButtons: [ 8, 17, 1, 2, 3, 10, 12 ],
+  toolbarSlideButtons: [17, 8, 24, 25],
 
   # 滑动按钮区域占几个按键宽度
   toolbarSlideButtonsMaxCount: {
-    portrait: 5,   # 竖屏
+    portrait: 5,  # 竖屏
     landscape: 8,  # 横屏
   },
 
@@ -109,24 +109,21 @@
     systemImageName: 'shift',
     action: 'shift',
 
-    uppercased: { systemImageName: 'shift.fill', },
-    capsLocked: { systemImageName: 'capslock.fill', },
+    uppercased: { systemImageName: 'shift.fill' },
+    capsLocked: { systemImageName: 'capslock.fill' },
 
-    whenPreeditChanged: {
-      action: { character: "'" },
+    longPress: [
+      {
+      action: { sendKeys: 'jJ' },
       systemImageName: 'square.and.line.vertical.and.square',
       text: '分词',
-
-      # action: 'tab',
-      # systemImageName: 'arrow.right.to.line',
-      # text: 'Tab',
-    },
+      },
+    ],
   },
 
 
   # Rime 方案中的快符
   quickAction:
-    { character: ';' },
-    # { character: '/' },
+    { sendKeys: 'jJ' },
 
 }
