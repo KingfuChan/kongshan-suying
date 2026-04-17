@@ -229,7 +229,7 @@ local settings = import '../Settings.libsonnet';
   commaButton: {
     name: 'commaButton',
     params: {
-      action: { character: ',', },
+      action: { character: ',' },
       text: '，',
       center: { y: 0.52 },
 
@@ -240,8 +240,15 @@ local settings = import '../Settings.libsonnet';
       },
 
       whenAlphabetic: {
-        text: ',', center: { y: 0.48 },
-        swipeUp: { text: '.', center: { y: 0.28 } },
+        action: { character: '.' },
+        text: '.', 
+        center: { y: 0.48 },
+
+        swipeUp: { 
+        action: { character: ',' },
+        text: ',', 
+        center: { y: 0.28 } 
+        },
       },
     },
   },

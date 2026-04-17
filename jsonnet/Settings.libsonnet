@@ -45,7 +45,8 @@
   spaceButtonSchemaNameCenter:
     # { x: 0.2, y: 0.7 }, # 左下角
     # { x: 0.5, y: 0.5 }, # 中间
-    null,               # 不显示
+    { x: 0.8, y: 0.7 }, # 右下角
+    # null,               # 不显示
 
 
   # 上下滑动提示文字显示位置
@@ -79,12 +80,12 @@
   # 26-左移  27-右移
   #
   # 将上述代号填入下面的数组即可
-  toolbarSlideButtons: [17, 8, 24, 25],
+  toolbarSlideButtons: [ 23, 8, 24, 25, 20, 9, 3, 17, 14, 13 ],
 
   # 滑动按钮区域占几个按键宽度
   toolbarSlideButtonsMaxCount: {
-    portrait: 5,  # 竖屏
-    landscape: 8,  # 横屏
+    portrait: 4,  # 竖屏
+    landscape: 6,  # 横屏
   },
 
 
@@ -95,7 +96,7 @@
 
   # 主题色
   # 0-无  1-红色  2-绿色  3-橙色  4-蓝色  5-紫色
-  accentColor: 4,
+  accentColor: 3,
 
 
   # 中文模式下，字母键是否大写显示
